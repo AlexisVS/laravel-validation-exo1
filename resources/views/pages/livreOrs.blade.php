@@ -1,4 +1,5 @@
 @extends("template.index")
+@include("template.flash")
 @section('content')
     <table class="table">
         <thead>

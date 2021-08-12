@@ -25,6 +25,7 @@ class LivreOrsController extends Controller
      */
     public function create()
     {
+
         return view('pages.addLivreOr');
     }
 
@@ -39,7 +40,7 @@ class LivreOrsController extends Controller
         request()->validate([
             'authorName' => 'required|max:20',
             'authorText' => 'required|max:300',
-            'authorNote' => 'required|max:5|min:1'
+            'authorNote' => 'required|integer|between:1,5'
         ]);
 
         $livreOr = new LivreOrs;
@@ -47,6 +48,7 @@ class LivreOrsController extends Controller
         $livreOr->authorText = $request->authorText;
         $livreOr->authorNote = $request->authorNote;
         $livreOr->save();
+
         return redirect("/livreOr")->with('success', "Membre crée");
     }
 
@@ -86,7 +88,7 @@ class LivreOrsController extends Controller
         request()->validate([
             'authorName' => 'required|max:20',
             'authorText' => 'required|max:300',
-            'authorNote' => 'required|max:5|min:1'
+            'authorNote' => 'required|integer|between:1,5'
         ]);
 
         $livreOr = $livreOrs::find($id);
